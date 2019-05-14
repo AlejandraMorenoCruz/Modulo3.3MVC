@@ -1,5 +1,6 @@
-const Pag1=require('../controllers/Pag1');
+const Pag1=require('../controllers/Pag1.js');
 const alumnos = require ('../controllers/alumnis.js');
+const busca = require ('../controllers/Pag2.js')
 const router =(request, response)=>{
   if (request.url==='/pag1'){
     var result = Pag1(request);
@@ -11,30 +12,14 @@ const router =(request, response)=>{
     Pag2(require);
   }
   else if (request.url.startsWith('/alumnos')){
+    var result=alumnos(request);
     response.end (result);
-    alumnos.doLista(request);
+
   }
-  else if (require.url.startsWith('/search')){
-    var muestra = listAlumnos(request);
-    response.end(muesta);
-    listAlumnos(require);
+  else if (request.url.startsWith('/search')){
+    var search = busca(request); //aquí no está funcionando
+    response.end(search);
   }
 }
-
-/*
-function procesaAlumno(peticion) {
-  console.log(peticion.url);
-  let miURL = url.parse(peticion.url,TRUE);
-  //î convierte la URL de texto en un objeto de js
-  if (miURL.query.func === 'alta', result){
-    let nuevoRegistro = {
-      NombreP: miURL.query.n,
-      ApellidoP:miURL.query.ap,
-      ApellidoM:miURL.quiery.am
-    }
-    modelo.push(nuevoRegistro);
-    modelo.end(result);
-  }
-}*/
 
 module.exports = router;

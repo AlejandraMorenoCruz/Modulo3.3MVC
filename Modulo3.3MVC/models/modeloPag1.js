@@ -1,4 +1,4 @@
-const data=require('../Data/data.json');
+const data=require('../Data/listaAlumnos.json');
 const modelP1=()=>{
   return data;
 }
